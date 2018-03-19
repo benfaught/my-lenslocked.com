@@ -20,7 +20,7 @@ func contact(w http.ResponseWriter, r *http.Request) {
 func main() {
 	r := mux.NewRouter()
 	r.HandleFunc("/", home)
-	r.HandleFunc("/contact", handlerFunc)
+	r.HandleFunc("/contact", contact)
 	http.Handle("/favicon.ico", http.NotFoundHandler())
 	http.ListenAndServe(":3000", r)
 }
