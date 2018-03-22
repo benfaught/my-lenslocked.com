@@ -1,22 +1,29 @@
 {{define "bootstrap"}}
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Starter Template for Bootstrap</title>
-    <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-  </head>
 
-  <body>
-    {{template "navbar"}}
-    <div class="container-fluid">
-        {{template "yield" .}}
-    </div>
+<head>
+  <title>Starter Template for Bootstrap</title>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
 
-    <!-- jquery & Bootstrap JS -->
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-    
-    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-   
-  </body>
+<body>
+  {{template "navbar"}}
+  <div class="container-fluid">
+    {{template "yield" .}}
+  </div>
+
+  <!-- jquery & Bootstrap JS -->
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script>
+    var url = window.location;
+    $('ul.nav a').filter(function () {
+      return this.href == url;
+    }).parent().addClass('active');
+  </script>
+</body>
+
 </html>
 {{end}}
