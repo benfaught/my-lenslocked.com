@@ -66,6 +66,7 @@ images/**
 notes/**
 .vscode/**
 *.swp
+.gometalinter
 
 #Don't include our binary
 lenslocked.com
