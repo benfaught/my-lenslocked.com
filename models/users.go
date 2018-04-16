@@ -18,8 +18,8 @@ var (
 	ErrInvalidID = errors.New("models: ID provided was invalid")
 )
 
-// Random String was generated from an
-// online random string generator to use in userPwPepper
+// a random-string was generated from an
+// online random-string-generator to use in userPwPepper
 const userPwPepper = "lDS3aue165e3"
 
 func NewUserService(connectionInfo string) (*UserService, error) {
