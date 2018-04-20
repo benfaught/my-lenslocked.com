@@ -91,6 +91,7 @@ func (u *Users) Login(w http.ResponseWriter, r *http.Request) {
 	http.Redirect(w, r, "cookietest", http.StatusFound)
 }
 
+// signIn is used to sign the given user in via cookies
 func signIn(w http.ResponseWriter, user *models.User) {
 	cookie := http.Cookie{
 		Name:  "email",
