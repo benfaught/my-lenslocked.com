@@ -35,7 +35,17 @@ type SignupForm struct {
 //
 //GET /signup
 func (u *Users) New(w http.ResponseWriter, r *http.Request) {
-	u.NewView.Render(w, nil)
+	type Alert struct {
+		Level   string
+		Message string
+	}
+	a := Alert{
+		Level:   "warning",
+		Message: "successfully rendered a dynamic alert!",
+	}
+	if err := u.NewView.Render(w, a); err != nil {
+		panic(err)
+	}
 }
 
 //Create is used to process the signup form when a user tries to
