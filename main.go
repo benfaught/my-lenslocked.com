@@ -22,9 +22,9 @@ func main() {
 	services, err := models.NewServices(psqlInfo)
 	must(err)
 	// TODO: Fix this
-	// defer us.Close()
-	// us.AutoMigrate()
-	// us.DestructiveReset()
+	defer services.Close()
+	// services.DestructiveReset()
+	services.AutoMigrate()
 
 	staticC := controllers.NewStatic()
 	usersC := controllers.NewUsers(services.User)
