@@ -41,6 +41,7 @@ func main() {
 
 	// Gallery routes
 	r.Handle("/galleries/new", galleriesC.New).Methods("GET")
+	r.HandleFunc("/galleries", galleriesC.Create).Methods("POST")
 
 	fmt.Println("starting the server at :3000")
 	http.ListenAndServe(":3000", r)
