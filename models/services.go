@@ -1,6 +1,8 @@
 package models
 
-import "github.com/jinzhu/gorm"
+import (
+	"github.com/jinzhu/gorm"
+)
 
 func NewServices(connectionInfo string) (*Services, error) {
 	db, err := gorm.Open("postgres", connectionInfo)
