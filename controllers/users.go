@@ -136,7 +136,7 @@ func (u *Users) signIn(w http.ResponseWriter, user *models.User) error {
 func (u *Users) CookieTest(w http.ResponseWriter, r *http.Request) {
 	cookie, err := r.Cookie("remember_token")
 	if err != nil {
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		http.Redirect(w, r, "/login", http.StatusFound)
 		return
 	}
 	user, err := u.us.ByRemember(cookie.Value)
