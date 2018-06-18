@@ -66,6 +66,30 @@ func (g *Galleries) Edit(w http.ResponseWriter, r *http.Request) {
 	g.EditView.Render(w, vd)
 }
 
+//Get /galleries/:id/update
+func (g *Galleries) Update(w http.ResponseWriter, r *http.Request) {
+	gallery, err := g.galleryByID(w, r)
+	if err != nil {
+		return
+	}
+	user := context.User(r.Context())
+	if gallery.UserID != user.ID {
+		http.Error(w, "Gallery not found", http.StatusNotFound)
+		return
+	}
+	var vd views.Data
+	vd.Yield = gallery
+	var form GalleryForm
+	if err := parseForm(r, &form); err != nil {
+		log.Println(err)
+		vd.SetAlert(err)
+		g.EditView.Render(w, vd)
+		return
+	}
+	gallery.Title = form.Title
+	fmt.Fprintln(w, gallery)
+}
+
 //POST /galleries
 func (g *Galleries) Create(w http.ResponseWriter, r *http.Request) {
 	var vd views.Data
