@@ -15,6 +15,12 @@
 {{end}}
 
 {{define "editgalleryForm"}}
+<style>
+  .del:hover {
+    background-color: red;
+    color: white;
+  }
+</style>
 <form action="/galleries/{{.ID}}/update" method="POST">
     <div class="form-group">
       <label for="title">Title</label>
@@ -22,8 +28,9 @@
     </div>
     
     <button type="submit" class="btn btn-primary">Update</button>
+    <button type="submit" form="delete" class="btn btn-default pull-right del">Delete</button>
   </form>
-  <form action="/galleries/{{.ID}}/delete" method="POST">
-    <button type="submit" class="btn btn-danger">Delete</button>
-  </form>
+<form action="/galleries/{{.ID}}/delete" method="POST" id="delete">
+</form>
+  
 {{end}}
