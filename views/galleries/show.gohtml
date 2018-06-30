@@ -4,7 +4,13 @@
     <h1>
     {{.Title}}
     </h1>
-    <p>Images coming soon...</p>
+    <ul>
+      {{range .Images}}
+        <li>
+          {{.}}
+        </li>
+      {{end}}
+    </ul>
   </div>
 </div>
 {{end}}

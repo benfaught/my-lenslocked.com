@@ -4,11 +4,12 @@ import (
 	"fmt"
 	"io"
 	"os"
+	"path/filepath"
 )
 
 type ImageService interface {
 	Create(galleryID uint, r io.ReadCloser, filename string) error
-	// ByGalleryID(galleryID uint) []string
+	ByGalleryID(galleryID uint) ([]string, error)
 }
 
 func NewImageService() ImageService {
@@ -38,12 +39,24 @@ func (is *imageService) Create(galleryID uint, r io.ReadCloser, filename string)
 	return nil
 }
 
+func (is *imageService) ByGalleryID(galleryID uint) ([]string, error) {
+	path := is.imagePath(galleryID)
+	strings, err := filepath.Glob(path + "*")
+	if err != nil {
+		return nil, err
+	}
+	return strings, nil
+}
+
+func (is *imageService) imagePath(galleryID uint) string {
+	return fmt.Sprintf("images/galleries/%v/", galleryID)
+}
+
 func (is *imageService) mkImagePath(galleryID uint) (string, error) {
-	galleryPath := fmt.Sprintf("images/galleries/%v/", galleryID)
+	galleryPath := is.imagePath(galleryID)
 	err := os.MkdirAll(galleryPath, 0755)
 	if err != nil {
 		return "", err
 	}
 	return galleryPath, nil
-
 }
