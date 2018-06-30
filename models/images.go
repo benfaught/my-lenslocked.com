@@ -45,6 +45,11 @@ func (is *imageService) ByGalleryID(galleryID uint) ([]string, error) {
 	if err != nil {
 		return nil, err
 	}
+	for i := range strings {
+		strings[i] = "/" + strings[i]
+		strings[i] = filepath.ToSlash(strings[i])
+
+	}
 	return strings, nil
 }
 

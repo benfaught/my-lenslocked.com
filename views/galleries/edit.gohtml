@@ -2,6 +2,7 @@
 <div class="row">
   <div class="col-md-10 col-md-offset-1">
     <h2>Edit your gallery</h3>
+    <a href="/galleries/{{.ID}}">View this Gallery</a>
     <hr>
   </div>
   <div class="col-md-12">
@@ -79,11 +80,19 @@
 {{end}}
 
 {{define "galleryImages"}}
-  <ul>
-    {{range .Images}}
-      <li>
-        {{.}}
-      </li>
-    {{end}}
-  </ul>
+ {{range .ImagesSplitN 6}}
+    <div class="col-md-2">
+      {{range .}}
+        <a href="{{.}}">
+          <img src="{{.}}" class="thumbnail">
+        </a>
+      {{end}}
+    </div>
+  {{end}}
+  <!--  Normally we wouldn't put styles here -->
+<style>
+  .thumbnail {
+    width: 100%;
+  }
+</style>
 {{end}}

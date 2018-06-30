@@ -2,15 +2,28 @@
 <div class="row">
   <div class="col-md-12">
     <h1>
-    {{.Title}}
+      {{.Title}}
     </h1>
-    <ul>
-      {{range .Images}}
-        <li>
-          {{.}}
-        </li>
-      {{end}}
-    </ul>
+    <hr>
   </div>
 </div>
+<div class="row">
+  {{range .ImagesSplitN 3}}
+    <div class="col-md-4">
+      {{range .}}
+        <a href="{{.}}">
+          <img src="{{.}}" class="thumbnail">
+        </a>
+      {{end}}
+    </div>
+  {{end}}
+</div>
+
+
+<!--  Normally we wouldn't put styles here -->
+<style>
+  .thumbnail {
+    width: 100%;
+  }
+</style>
 {{end}}

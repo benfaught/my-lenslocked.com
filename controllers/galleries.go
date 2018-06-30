@@ -148,7 +148,6 @@ func (g *Galleries) Create(w http.ResponseWriter, r *http.Request) {
 	}
 	url, err := g.r.Get(EditGallery).URL("id", fmt.Sprintf("%v", gallery.ID))
 	if err != nil {
-		// TODO: Make this go to the index page
 		http.Redirect(w, r, "/", http.StatusFound)
 		return
 	}
@@ -176,6 +175,7 @@ func (g *Galleries) ImageUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	// Iterate over uploaded files to process them.
 	files := r.MultipartForm.File["images"]
 	for _, f := range files {
 		// Open the uploaded file
