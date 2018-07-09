@@ -5,11 +5,27 @@ import (
 	"io"
 	"os"
 	"path/filepath"
+	"strings"
 )
+
+// Image is NOT stored in the database
+type Image struct {
+	GalleryID uint
+	Filename  string
+}
+
+func (i *Image) Path() string {
+	return "/" + i.RelativePath()
+}
+
+func (i *Image) RelativePath() string {
+	return fmt.Sprintf("images/galleries/%v/%v", i.GalleryID, i.Filename)
+}
 
 type ImageService interface {
 	Create(galleryID uint, r io.ReadCloser, filename string) error
-	ByGalleryID(galleryID uint) ([]string, error)
+	ByGalleryID(galleryID uint) ([]Image, error)
+	Delete(i *Image) error
 }
 
 func NewImageService() ImageService {
@@ -39,18 +55,28 @@ func (is *imageService) Create(galleryID uint, r io.ReadCloser, filename string)
 	return nil
 }
 
-func (is *imageService) ByGalleryID(galleryID uint) ([]string, error) {
+func (is *imageService) ByGalleryID(galleryID uint) ([]Image, error) {
 	path := is.imagePath(galleryID)
-	strings, err := filepath.Glob(path + "*")
+	imgStrings, err := filepath.Glob(path + "*")
 	if err != nil {
 		return nil, err
 	}
-	for i := range strings {
-		strings[i] = "/" + strings[i]
-		strings[i] = filepath.ToSlash(strings[i])
+	ret := make([]Image, len(imgStrings))
+	for i := range imgStrings {
+		imgStrings[i] = filepath.ToSlash(imgStrings[i])
+		imgStrings[i] = strings.Replace(imgStrings[i], path, "", 1)
+		ret[i] = Image{
+			Filename:  imgStrings[i],
+			GalleryID: galleryID,
+		}
+		// strings[i] = "/" + strings[i]
 
 	}
-	return strings, nil
+	return ret, nil
+}
+
+func (is *imageService) Delete(i *Image) error {
+	return os.Remove(i.RelativePath())
 }
 
 func (is *imageService) imagePath(galleryID uint) string {
