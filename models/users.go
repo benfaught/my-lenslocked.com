@@ -5,7 +5,7 @@ import (
 	"strings"
 
 	"github.com/jinzhu/gorm"
-	_ "github.com/jinzhu/gorm/dialects/postgres"
+
 	"golang.org/x/crypto/bcrypt"
 	"lenslocked.com/hash"
 	"lenslocked.com/rand"
@@ -13,6 +13,7 @@ import (
 
 // a random-string was generated from an
 // online random-string-generator to use in userPwPepper
+//TODO: config this
 const userPwPepper = "lDS3aue165e3"
 const hmacSecretKey = "secret-hmac-key"
 
