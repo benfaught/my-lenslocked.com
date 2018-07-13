@@ -71,3 +71,7 @@ notes/**
 #Don't include our binary
 lenslocked.com
 images/**
+
+#production-files
+Caddyfile
+config.go
