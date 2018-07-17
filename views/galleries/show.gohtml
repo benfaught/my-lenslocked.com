@@ -1,18 +1,17 @@
 {{define "yield"}}
 <div class="row">
   <div class="col-md-12">
-    <h1>
+    <h1 class="gallery-title">
       {{.Title}}
     </h1>
-    <hr>
   </div>
 </div>
-<div class="row">
+<div class="row main-display">
   {{range .ImagesSplitN 4}}
-    <div class="col-md-3">
+    <div class="col-md-3 bucket">
       {{range .}}
         <a href="{{.Path}}">
-          <img src="{{.Path}}" class="thumbnail">
+          <img src="{{.Path}}" class="card card-special" style="max-width: 30rem;">
         </a>
       {{end}}
     </div>

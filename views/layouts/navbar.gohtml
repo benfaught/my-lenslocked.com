@@ -1,33 +1,36 @@
 {{define "navbar"}}
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
+<nav id="main-nav" class="navbar navbar-expand-lg fixed-top">
       <!-- Brand and toggle get grouped for better mobile display -->
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
+        <a class="navbar-brand" href="/">Exposé</i></a>
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand" href="/">LensLocked.com</a>
-      </div>
   
       <!-- Collect the nav links, forms, and other content for toggling -->
-      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-        <ul class="nav navbar-nav">
-          <li><a href="/">Home</a></li>
-          <li><a href="/contact">Contact</a></li>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item"><a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a></li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Mode</a>
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" href="javascript:;" id="light">Light</a>
+              <a class="dropdown-item" href="javascript:;" id="dark">Dark</a>
+            </div>
+        </li>
+        <li class="nav-item"><a class="nav-link" href="/contact">Contact</a></li>
           {{if .User}}
-          <li><a href="/galleries">Galleries</a></li>
+        <li class="nav-item"><a class="nav-link" href="/galleries">Galleries</a></li>
           {{end}}
         </ul>
-        <ul class="nav navbar-nav navbar-right">
-          <li><a href="/login">Login</a></li>
-          <li><a href="/signup">Sign Up</a></li>
+        <ul class="nav navbar-nav navbar-right my-2 my-lg-0">
+          <li class="nav-item"><a class="nav-link" href="/login">Login</a></li>
+          <li class="nav-item"><a class="nav-link" href="/signup">Sign Up</a></li>
           
         </ul>
       </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
 </nav>
+<script>
+  navBarCheck();
+</script>
 
 {{end}}

@@ -1,17 +1,78 @@
 /* Lenslocked.com styles */
 
 body {
-    margin-top: 75px;
+    margin-top: 100px;
 }
 
-.thumbnail {
+.navbar-special {
+    background-color: #222222 !important;
+}
+
+.nav-pad {
+    padding: .5rem 1rem;
+    /* color: darkslategray; */
+}
+
+.navbar .nav-link {
+    border: none;
+    display: inline-block;
+    padding: 1rem 1.25rem !important;
+}
+ .bucket {
+     padding: 0 .5rem;
+ }
+
+ .main-display {
+     padding:1rem 2rem;
+ }
+
+ .gallery-title {
+    padding:1rem 2rem;
+ }
+
+ .custom-upload {
+    margin: 1.5rem 0 .5rem 0;
+ }
+
+/* nav.bg-primary.fixed-top {
+    background-color: #222222;
+} */
+
+.fa-camera-retro {
+    /* color: #187889; */
+    color: gray;
+    text-align: center;
+}
+
+.navbar-brand {
+    font-family: 'Allura', cursive;
+    padding: 7px 15px;
+    color: #151515;
+    font-size: 2.5rem;
+}
+
+.logo {
+    font-family: 'Allura', cursive;
+    font-size: 3.25rem;
+    font-weight: inherit;
+    vertical-align: 5%;
+    /* text-indent: 2rem; */
+    padding-left: .5rem;
+    /* word-spacing: 5mm; */
+}
+
+.card-special {
     width: 100%;
-    margin: 1.5rem 0 1rem 0;
+    margin: .5rem 0 .5rem 0;
     background: transparent;
     border: 0 none;
-    border-radius: 2.5px;
-    padding-top: 1rem;
-    /* margin: 0; */
+    border-radius: 2.5px !important;
+    /* padding-top: .25rem; */
+    margin-top: .25rem;
+}
+
+.card {
+    /* border-radius: 5px; */
 }
 
 .del-btn {
@@ -29,13 +90,14 @@ body {
 .greet {
     width: 100%;
     text-align: center;
-    font-family: 'Cardo', serif;
+    /* font-family: 'Cardo', serif; */
+    font-family: 'Tienne', serif;
     margin-top: 4rem;
 }
 .message {
     width: 100%;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.25rem;
 }
 
 .cover {
